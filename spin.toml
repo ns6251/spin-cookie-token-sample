@@ -1,0 +1,15 @@
+spin_version = "1"
+authors = ["Shota Nakagawa <g21210368a@edu.teu.ac.jp>"]
+description = "A simple Spin HTTP component in Rust"
+name = "spin-hello-world"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "spin-hello-world"
+source = "target/wasm32-wasi/release/spin_hello_world.wasm"
+environment = { REDIS_ADDRESS = "redis://localhost:6379/" }
+[component.trigger]
+route = "/hello"
+[component.build]
+command = "cargo wasi build --release"
